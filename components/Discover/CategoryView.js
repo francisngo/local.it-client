@@ -13,7 +13,7 @@ import {
   DeviceEventEmitter,
   TouchableHighlight
 } from 'react-native';
-import Item from './Item';
+import ItemView from './ItemView';
 
 class Hint extends Component {
 

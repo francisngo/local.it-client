@@ -5,8 +5,8 @@ import {
   Text,
   Dimensions
 } from 'react-native';
-import store from '../store/locationStore';
-import MapView from 'react-native-maps';
+import store from '../../store/locationStore';
+import MapDisplay from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -32,18 +32,18 @@ export default class Map extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <MapView
+        <MapDisplay
           provider={this.props.provider}
           style={styles.map}
           initialRegion={this.state.region}
         >
-          <MapView.Marker
+          <MapDisplay.Marker
             pinColor='#04263F'
             title="Current Location"
             coordinate={this.state.region}
           />
           {this.props.navigation.state.params.list.map((itinerary, index) => (
-            <MapView.Marker
+            <MapDisplay.Marker
               pinColor='#04263F'
               key={itinerary.id}
               title={itinerary.name}
@@ -54,14 +54,14 @@ export default class Map extends React.Component {
               }}
             />
           ))}
-        </MapView>
+        </MapDisplay>
       </View>
     )
   }
 }
 
 Map.propTypes = {
-  provider: MapView.ProviderPropType,
+  provider: MapDisplay.ProviderPropType,
 };
 
 

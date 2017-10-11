@@ -8,7 +8,6 @@ import {
   DeviceEventEmitter,
   ImageBackground
 } from 'react-native';
-import Login from './Login';
 
 export default class Profile extends Component {
 

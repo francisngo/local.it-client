@@ -2,18 +2,18 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Discover from '../Discover';
-import Saved from '../Saved';
-import Itinerary from '../Itinerary';
-import Profile from '../Profile';
-import CategoryView from '../CategoryView';
-import InterestsByCity from '../InterestsByCity';
 import Login from '../Login';
-import Map from '../Map';
+import DiscoverView from '../Discover/DiscoverView';
+import CategoryView from '../Discover/CategoryView';
+import SavedView from '../Saved/SavedView';
+import InterestsView from '../Saved/InterestsView';
+import ItineraryView from '../Itinerary/ItineraryView';
+import MapView from '../Itinerary/MapView';
+import ProfileView from '../Profile/ProfileView';
 
 export const CategoryStack = StackNavigator({
   Discover: {
-    screen: Discover,
+    screen: DiscoverView,
     navigationOptions: {
       title: 'Choose Category',
       headerTintColor: '#161B2D',
@@ -42,7 +42,7 @@ export const CategoryStack = StackNavigator({
 
 export const SavedStack = StackNavigator({
   Saved: {
-    screen: Saved,
+    screen: SavedView,
     navigationOptions: {
       title: 'Cities',
       headerTintColor: '#161B2D',
@@ -54,8 +54,8 @@ export const SavedStack = StackNavigator({
       headerTintColor: '#2A4964',
     },
   },
-  InterestsByCity: {
-    screen: InterestsByCity,
+  InterestsView: {
+    screen: InterestsView,
     navigationOptions: {
       title: 'Create Itinerary',
       headerTintColor: '#161B2D',
@@ -71,7 +71,7 @@ export const SavedStack = StackNavigator({
 
 export const ItineraryStack = StackNavigator({
   Itinerary: {
-    screen: Itinerary,
+    screen: ItineraryView,
     navigationOptions: {
       title: 'Itinerary',
       headerTintColor: '#161B2D',
@@ -84,7 +84,7 @@ export const ItineraryStack = StackNavigator({
     }
   },
   MapView: {
-    screen: Map,
+    screen: MapView,
     navigationOptions: {
       title: 'Map',
       headerTintColor: '#161B2D',
@@ -100,7 +100,7 @@ export const ItineraryStack = StackNavigator({
 
 export const ProfileStack = StackNavigator({
   Profile: {
-    screen: Profile,
+    screen: ProfileView,
     navigationOptions: {
       title: 'Profile',
       headerTintColor: '#161B2D',

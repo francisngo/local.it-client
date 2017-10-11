@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import InterestsItem from './InterestsItem';
-import store from '../store/locationStore';
+import store from '../../store/locationStore';
 
 const window = Dimensions.get('window');
 export const IMAGE_HEIGHT = window.width / 2;
