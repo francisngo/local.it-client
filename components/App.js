@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './Login';
+import LoginView from './Login/LoginView';
 
 console.disableYellowBox = true;
 
 const App = () => {
-  return <Login/>
+  return <LoginView/>
 }
 
 export default App;

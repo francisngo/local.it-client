@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   DeviceEventEmitter
 } from 'react-native';
-import { Tabs } from './config/router';
+import { Tabs } from '../config/router';
 
 export default class Login extends Component {
 

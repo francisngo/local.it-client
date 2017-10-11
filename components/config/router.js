@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Login from '../Login';
+import LoginView from '../Login/LoginView';
 import DiscoverView from '../Discover/DiscoverView';
 import CategoryView from '../Discover/CategoryView';
 import SavedView from '../Saved/SavedView';
