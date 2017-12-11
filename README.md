@@ -1,6 +1,6 @@
-# Project Name
+# Local.it
 
-Local.it
+> Local.it is a mobile based application that recommends activities and businesses one at a time for a user to get excited about and track their likes/dislikes to send more informed suggestions.
 
 ## Team
 
@@ -10,17 +10,15 @@ Local.it
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+* [Getting Started](#getting-started)
+* [Requirements](#requirements)
+* [Development](#development)
+    * [Installing Dependencies](#installing-dependencies)
+* [Contributing](#contributing)
 
-## Usage
+## Getting Started
 
-> Some usage instructions
+Following these instructions will get you a copy of the project up and running for development purposes.
 
 ## Requirements
 
@@ -45,10 +43,6 @@ npm install
 pip install pandas
 pip install scikit-learn
 ```
-### Roadmap
-
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 
