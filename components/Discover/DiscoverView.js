@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import categories from '../../data/categories.js';
 import store from '../../store/locationStore';
-import YelpApi from 'v3-yelp-api';
+import Yelp from '../../utils/yelp';
 
 export default class Discover extends Component {
 
@@ -20,6 +20,7 @@ export default class Discover extends Component {
       error: null,
       categories: categories,
     };
+    this.fetchYelpData = this.fetchYelpData.bind(this);
   }
 
   componentDidMount() {
@@ -36,28 +37,41 @@ export default class Discover extends Component {
     );
   }
 
-  //Yelp Fetch that goes through Python
-  fetchYelpData (title) {
-    fetch('http://localhost:3000/api/yelp', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            latitude: store.getState().latitude,
-            longitude: store.getState().longitude,
-            fbID: this.props.screenProps.fbID,
-            title: title
-          })
-    })
-    .then((response) => {
-      var filtered = JSON.parse(response._bodyInit);
-      filtered = JSON.parse(filtered[0]);
-      console.log('parsed filter: ', filtered);
+  //Yelp Fetch
+  fetchYelpData(title) {
+    // console.log('line 42');
+    let term = title;
+    let lat = this.state.latitude;
+    let lng = this.state.longitude;
+    let location = String(lat) + ',' + String(lng);
+    let limit = '30';
+
+    Yelp.search(term, location, limit).then(data => {
+      // console.log('yelp data:', data);
       this.props.navigation.navigate('CategoryView', {
-        data: filtered,
+        data: data.businesses,
         category: title
-      })
+      });
     })
-    .catch(err => console.log);
+    .catch(err => console.log(err));
+
+    // yelp.accessToken(clientId, clientSecret).then(response => {
+    //   const client = yelp.client(response.jsonBody.access_token);
+    //
+    //   client.search(searchRequest).then(response => {
+    //     console.log(response);
+    //   });
+    // }).catch(err => console.log(err));
+    //
+    // yelp.search(params)
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.props.navigation.navigate('CategoryView', {
+    //       data: data.businesses,
+    //       category: title
+    //     })
+    //   })
+    //   .catch((err) => console.log(err));
   }
 
   render () {

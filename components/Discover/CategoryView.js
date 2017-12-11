@@ -76,7 +76,7 @@ export default class CategoryView extends Component {
           <Hint textLeft='Swipe Left to Pass'/>
           <Hint textRight='Swipe Right to Save'/>
         </View>
-        <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
+        <ItemView handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
     );
   }
