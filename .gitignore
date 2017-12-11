@@ -1,10 +1,7 @@
 # OSX
 #
 .DS_Store
-
-# Yelp API codes
-#
-.env
+auth/yelpConfig.js
 
 # Xcode
 #
@@ -55,6 +52,3 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
-
-auth/yelpConfig.js
-auth/googleConfig.js
