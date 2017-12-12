@@ -48,11 +48,14 @@ export default class CategoryView extends Component {
       item: "Suggestion",
     };
     this.handleYup = this.handleYup.bind(this);
+    this.handleNope = this.handleNope.bind(this);
   }
 
-  handleYup (card) {
+  handleYup(card) {
+    // console.log('card inside yup: ', card);
     var userId = this.props.screenProps.fbID;
-    fetch('http://localhost:3000/api/' + userId, {
+    // console.log('userId: ', userId);
+    fetch(`http://localhost:3000/api/discover/${userId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -61,9 +64,25 @@ export default class CategoryView extends Component {
         business: card
       })
     })
+    // TODO: jsonify the response then fix saved component to display saved interests.
     .then((result) => {
+      console.log('result: ', result);
       DeviceEventEmitter.emit('refreshFunc',  { data: result })
-    })
+    });
+  }
+
+  handleNope(card) {
+    // console.log('card inside nope', card);
+    var userId = this.props.screenProps.fbID;
+    fetch(`http://localhost:3000/api/discover/${userId}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        liked: 'false',
+        city: `${card.location.city}, ${card.location.state}`,
+        business: card
+      })
+    });
   }
 
   render() {
@@ -76,7 +95,11 @@ export default class CategoryView extends Component {
           <Hint textLeft='Swipe Left to Pass'/>
           <Hint textRight='Swipe Right to Save'/>
         </View>
-        <ItemView handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
+        <ItemView
+          handleYup={this.handleYup}
+          handleNope={this.handleNope}
+          userData={this.props.screenProps}
+          data={data}/>
       </View>
     );
   }
