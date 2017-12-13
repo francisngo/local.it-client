@@ -8,7 +8,7 @@ import {
   DeviceEventEmitter,
   ImageBackground
 } from 'react-native';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class Saved extends Component {
 
@@ -23,46 +23,85 @@ export default class Saved extends Component {
 
   componentDidMount() {
     this.getInitialData();
-    DeviceEventEmitter.addListener('refreshFunc', (event)=> {
-      var data = JSON.parse(event.data._bodyInit);
+    DeviceEventEmitter.addListener('refreshFunc', (result) => {
+      // console.log('line 27: ', result);
       this.setState({
-        user: data
+        user: result.data.interestsByCity
       });
+      // console.log('line 31: ', this.state);
     });
   }
 
   getInitialData () {
     let user = this.props.screenProps.fbID;
-    axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
-      .then((data) => {
-        this.setState({
-          user: data.data
-        });
+    fetch(`http://localhost:3000/api/${user}`, {
+      method: 'GET',
+    })
+    .then((response) => {
+      // console.log('line 42 response: ', response);
+      return response.json();
+    })
+    .then((responseJson) => {
+      // console.log('line 46 responseJson: ', responseJson);
+      this.setState({
+        user: responseJson.interestsByCity
       });
+      // console.log('line 50 this.state: ', this.state.user);
+    })
+    .catch(error => console.log('There has been a problem with your fetch operation: ', error.message));
+
+    // axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
+    //   .then((data) => {
+    //     this.setState({
+    //       user: data.data
+    //     });
+    //   });
   }
 
   getInterestsByCity (city) {
-  let user = this.props.screenProps.fbID;
-  axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
-    .then((data) => {
-      let savedInterest = data.data.interestsByCity.filter(element => {
-        if (element.city === city) {
-          return element;
+    let user = this.props.screenProps.fbID;
+    fetch(`http://localhost:3000/api/${user}`, {
+      method: 'GET',
+    })
+    .then((response) => {
+      // console.log('line 67 response: ', response);
+      return response.json();
+    })
+    .then((responseJson) => {
+      // console.log('line 71 responseJson: ', responseJson);
+      let savedInterest = responseJson.interestsByCity.filter(item => {
+        if (item.city === city) {
+          return item;
         }
       });
-      this.props.navigation.navigate('InterestsByCity', {
+      this.props.navigation.navigate('InterestsView', {
         city: city,
         interests: savedInterest,
       });
     })
-    .catch(err => console.log('ERROR!', err));
+    .catch(error => console.log('There has been a problem with your fetch operation: ', error.message));
+
+  // axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
+  //   .then((data) => {
+  //     let savedInterest = data.data.interestsByCity.filter(element => {
+  //       if (element.city === city) {
+  //         return element;
+  //       }
+  //     });
+  //     this.props.navigation.navigate('InterestsView', {
+  //       city: city,
+  //       interests: savedInterest,
+  //     });
+  //   })
+  //   .catch(err => console.log('ERROR!', err));
   }
 
   render() {
+    // console.log('this.state.user: ', this.state.user);
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.state.user.interestsByCity}
+          data={this.state.user}
           keyExtractor={(city, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
