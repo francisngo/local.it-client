@@ -10,39 +10,70 @@
 
 ## Table of Contents
 
-* [Getting Started](#getting-started)
 * [Requirements](#requirements)
+* [Getting Started](#getting-started)
 * [Development](#development)
     * [Installing Dependencies](#installing-dependencies)
 * [Contributing](#contributing)
-
-## Getting Started
-
-Following these instructions will get you a copy of the project up and running for development purposes.
 
 ## Requirements
 
 - MongoDB v3.4.7
 - Node 6.11.x
 - Xcode 8.3.3
-- Python 2.7.13
+
+## Getting Started
+
+Following these instructions will get you a copy of the project up and running for development purposes.
 
 ## Development
 
 ### Installing Dependencies
 
-From within the client root directory:
+* Fork and clone the repo(s):
+  * [Local.it Client](https://github.com/francisngo/local.it-client)
+  * [Local.it Server](https://github.com/francisngo/local.it-server)
+* Install dependencies from the root of the repo(s) by running:
 
-```sh
-npm install
-```
-From within the server root directory:
+* From within the server root directory:
 
-```sh
-npm install
-pip install pandas
-pip install scikit-learn
 ```
+$ npm install
+```
+
+* From within the client root directory:
+
+```
+$ npm install
+```
+
+* Start the MongoDB server from your terminal
+
+```
+$ mongod
+```
+
+### Run the Application
+
+* From within the server root directory:
+
+To watch changes to files:
+```
+$ npm run start:watch
+```
+
+To run server once:
+```
+$ npm run start
+```
+
+* From within the client root directory:
+```
+$ react-native link
+$ react-native run-ios
+```
+
+* iOS Simulator should open up if you have Xcode installed.
 
 ## Contributing
 

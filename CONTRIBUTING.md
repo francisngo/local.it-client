@@ -4,19 +4,23 @@
 
 From the terminal:
 
-0. mongod
+```
+$ mongod
+```
 
 From within the client root directory:
 
-0. npm install
-1. react-native link
+```
+* npm install
+* react-native link
+```
 
 From within the server root directory:
 
-0. npm install
-1. pip install pandas
-2. pip install scikit-learn
-3. npm run start:watch
+```
+$ npm install
+$ npm run start:watch
+```
 
 In order to use the app, you also need to setup a facebook developers profile with the correct as well as a yelp fusion API account.
 
@@ -45,21 +49,22 @@ const facebook = {
 module.exports = facebook;
 ```
 
-Yelp fusion API: https://www.yelp.com/developers
+Yelp API: https://www.yelp.com/developers
 
 0. Create an app.
-1. Grab api key and save in auth/yelpConfig.js in the server root dir as such:
+1. Grab api key
+2. Create auth/yelpConfig.js in the client root dir as such:
 ``` javascript
-const yelp = {
-  appId: 'APP_ID',
-  appSecret: 'APP_SECRET'
-}
-
-module.exports = yelp;
+export default yelpConfig = {
+    appId: 'APP_ID',
+    appSecret: 'APP_SECRET'
+};
 ```
 
-
-After all the above is done, in the client root dir, run 'react-native run-ios'.
+After all the above is done, in the client root dir, run:
+```
+$ react-native run-ios
+```
 
 ## Github Worflow
 
@@ -68,7 +73,7 @@ After all the above is done, in the client root dir, run 'react-native run-ios'.
 0.1 fork the repo
 0.2 git clone
 0.3 git remote add origin master (to your own branch)
-0.4 git remote add upstream (to the toucan)
+0.4 git remote add upstream (to the cereal-n-milk)
 
 --- SUBMITTING CHANGES TO THE REPO ---
 
@@ -193,7 +198,7 @@ Thanks for contributing!
 
 This is just to help you organize your process
 
-- [ ] Did I cut my work branch off of master (don't cut new branches from existing feature brances)?
+- [ ] Did I cut my work branch off of master (don't cut new branches from existing feature branches)?
 - [ ] Did I follow the correct naming convention for my branch?
 - [ ] Is my branch focused on a single main change?
  - [ ] Do all of my changes directly relate to this change?
@@ -205,17 +210,3 @@ This is just to help you organize your process
 
 If you follow all of these guidelines and make good changes, you should have
 no problem getting your changes merged in.
-
-
-<!-- Links -->
-[style guide]: https://github.com/reactorcore/style-guide
-[n-queens]: https://github.com/reactorcore/n-queens
-[Underbar]: https://github.com/reactorcore/underbar
-[curriculum workflow diagram]: http://i.imgur.com/p0e4tQK.png
-[cons of merge]: https://f.cloud.github.com/assets/1577682/1458274/1391ac28-435e-11e3-88b6-69c85029c978.png
-[Bookstrap]: https://github.com/reactorcore/bookstrap
-[Taser]: https://github.com/reactorcore/bookstrap
-[tools workflow diagram]: http://i.imgur.com/kzlrDj7.png
-[Git Flow]: http://nvie.com/posts/a-successful-git-branching-model/
-[GitHub Flow]: http://scottchacon.com/2011/08/31/github-flow.html
-[Squash]: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
