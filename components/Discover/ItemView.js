@@ -48,27 +48,15 @@ export default class Item extends Component {
     }
   }
 
-  handleNope (card) {
-    var userId = this.props.userData.fbID;
-    fetch('http://localhost:3000/api/' + userId, {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        liked: 'false',
-        city: `${card.location.city}, ${card.location.state}`,
-        business: card
-      })
-    })
-  }
-
   render() {
+    // console.log('props: ', this.props);
     return (
       <SwipeCards
         cards={this.state.cards}
         renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
         handleYup={this.props.handleYup}
-        handleNope={this.handleNope.bind(this)}
+        handleNope={this.props.handleNope}
         showYup={true}
         showNope={true}
         yupText='Save'

@@ -56,7 +56,6 @@ export default class Itinerary extends Component {
                 style={styles.image}
                 source={{ uri: item.itineraryList[0].image_url }}
               >
-                {console.log('item:', item)}
                 <View style={styles.textContainer}>
                   <Text style={styles.itineraryTextName}>{item.name}
                     <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
