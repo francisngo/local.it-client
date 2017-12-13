@@ -31,6 +31,7 @@ export default class Discover extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude
         });
+        // console.log('position:', position);
       },
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -41,11 +42,13 @@ export default class Discover extends Component {
   fetchYelpData(title) {
     // console.log('line 42');
     let term = title;
-    let lat = this.state.latitude;
-    let lng = this.state.longitude;
+    let lat = store.getState().latitude;
+    let lng = store.getState().longitude;
+    // console.log('lat: ', lat);
+    // console.log('lng: ', lng);
     let location = String(lat) + ',' + String(lng);
     let limit = '30';
-
+    // console.log('location: ', location);
     Yelp.search(term, location, limit).then(data => {
       // console.log('yelp data:', data);
       this.props.navigation.navigate('CategoryView', {
