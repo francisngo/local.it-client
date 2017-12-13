@@ -64,10 +64,12 @@ export default class CategoryView extends Component {
         business: card
       })
     })
-    // TODO: jsonify the response then fix saved component to display saved interests.
+    .then((response) => {
+      return response.json();
+    })
     .then((result) => {
-      console.log('result: ', result);
-      DeviceEventEmitter.emit('refreshFunc',  { data: result })
+      // console.log('CategoryView: ', result);
+      DeviceEventEmitter.emit('refreshFunc',  { data: result });
     });
   }
 
